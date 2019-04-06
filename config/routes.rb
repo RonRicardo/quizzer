@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   post 'questions/:id/:answer_id', to: "questions#create_user_answer", as: "create_user_answer"
 
+  # prevents error if a user refreshes after answering a question
+  get 'questions/:id/:answer_id', to: "questions#show"
+
   resources :questions, only: [:index, :show]
 
   resources :users do
