@@ -4,12 +4,31 @@
     <title>Quizzer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">Quizzer</a>
+    <% if user_signed_in? %>
+    <div class="navbar-nav">
+      <%= link_to "Home", '/', class: "nav-link" %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link"  %>
+      <%= link_to "Add Question", new_user_question_url(current_user), class: "nav-link"  %>
+      <%= link_to "View My Questions", user_questions_url(current_user), class: "nav-link"  %>
+      <%= link_to "View All Questions", questions_url, class: "nav-link"  %>
+    </div>
+    <% end %>
+</nav>
+
+
   <body>
-    <%= yield %>
+   <div class="container" style="padding-top: 10px;">
+    <div class="row justify-content-center">
+     <div class="col-8">
+          <%= yield %>
+     </div>
+    </div>
+   </div>
   </body>
 </html>

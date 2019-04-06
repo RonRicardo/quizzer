@@ -1,0 +1,5 @@
+<ul class="list-group list-group-flush">
+  <% @questions.each do |q| %>
+    <li class="list-group-item"><%= link_to q.title, question_path(q.id) %></li>
+  <% end %>
+</ul>
