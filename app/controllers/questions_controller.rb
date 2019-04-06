@@ -29,8 +29,7 @@ class QuestionsController < ApplicationController
   end
 
   def create_user_answer
-    @user_answer = UserAnswer.new(answer_id: params[:answer_id], user_id: current_user.id)
-    @user_answer.save
+    @user_answer = UserAnswer.create(answer_id: params[:answer_id], user_id: current_user.id)
       if @user_answer.answer.correct == true
         flash[:success] = "Your answer was correct!"
       else
