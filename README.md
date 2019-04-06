@@ -1,6 +1,6 @@
 ## Quizzer
 
-To use, visit https://fast-peak-29354.herokuapp.com/.
+To use, visit https://fast-peak-29354.herokuapp.com/
 
 # Credentials: 
 User 1:  
