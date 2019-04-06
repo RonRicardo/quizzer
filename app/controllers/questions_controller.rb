@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
       if @question.valid? && @question.save
         redirect_to question_path(@question)
       else
+        (3 - @question.answers.length).times { @question.answers.build }
         render :new
     end
   end
@@ -30,7 +31,13 @@ class QuestionsController < ApplicationController
   def create_user_answer
     @user_answer = UserAnswer.new(answer_id: params[:answer_id], user_id: current_user.id)
     @user_answer.save
-      render :show
+      if @user_answer.answer.correct == true
+        flash[:success] = "Your answer was correct!"
+      else
+        flash[:danger] = "'#{@user_answer.answer.content}' was not the correct answer, try again!"
+      end
+        flash.discard
+    render :show
   end
 
   private

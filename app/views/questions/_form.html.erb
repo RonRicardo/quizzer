@@ -1,8 +1,7 @@
-<%= form_with(model: question, local: true) do |form| %>
+<%= form_with(model: question, html: {class: "form-horizontal center"}, url: user_questions_url, local: true) do |form| %>
   <% if question.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
+      <h6><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h6>
       <ul>
       <% question.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,16 +10,26 @@
     </div>
   <% end %>
 
-  <%= form.label :question %>
-  <%= form.text_field :title %>
-
-    <%= form.fields_for :answers do |g| %>
-      <%= g.label :answer %>
-      <%= g.check_box :correct, value: true %>
-      <%= g.text_field :content %>
-    <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <div class="card card-body bg-light">
+    <div class="form-group">
+      <%= form.label :question %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+      <%= form.fields_for :answers do |g| %>
+        <div class="form-group pt-2">
+          <%= g.label :answer %>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <%= g.check_box :correct, value: true, class: "form-input-check", aria: "Checkbox for following text input" %>
+              </div>
+            </div>
+            <%= g.text_field :content, class: "form-control", aria: "Text input with checkbox" %>
+          </div>
+        </div>
+      <% end %>
+    <div class="actions">
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
+ <% end %>
+</div>
