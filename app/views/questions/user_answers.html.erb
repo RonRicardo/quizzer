@@ -1,2 +1,2 @@
-<h1>Questions#user_answers</h1>
-<p>Find me in app/views/questions/user_answers.html.erb</p>
+<h1><%= @title %></h1>
+<%= render partial: "shared/questions_list", object: @questions, full: true %>

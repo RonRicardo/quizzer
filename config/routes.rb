@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users do
     get 'questions', to: "questions#user_questions", as: "questions"
+    get 'answers', to: "questions#user_answers", as: "answers"
     resources :questions, only: [:new, :create]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

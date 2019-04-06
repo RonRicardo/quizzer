@@ -28,6 +28,11 @@ class QuestionsController < ApplicationController
       render :index, locals: { title: @title = "Questions #{current_user.username} Asked" }
   end
 
+  def user_answers
+    @questions = current_user.answered_questions
+      render :index, locals: { title: @title = "Questions #{current_user.username} Answered" }
+  end
+
   def create_user_answer
     @user_answer = UserAnswer.create(answer_id: params[:answer_id], user_id: current_user.id)
       if @user_answer.answer.correct == true
