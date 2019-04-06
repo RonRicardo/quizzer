@@ -1,24 +1,12 @@
-# README
+## Quizzer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To use, visit https://fast-peak-29354.herokuapp.com/.
 
-Things you may want to cover:
+# Credentials: 
+User 1:
+ email: "myemail@gmail.com",
+ password: "123456"
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+User 2:
+ email: "user@email.com"
+ password: "password"
