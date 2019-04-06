@@ -25,6 +25,12 @@ class QuestionsController < ApplicationController
     @questions = current_user.questions
   end
 
+  def create_user_answer
+    @user_answer = UserAnswer.new(answer_id: params[:answer_id], user_id: current_user.id)
+    @user_answer.save
+      render :show
+  end
+
   private
     def set_question
       @question = Question.find(params[:id])
