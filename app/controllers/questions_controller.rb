@@ -25,12 +25,13 @@ class QuestionsController < ApplicationController
 
   def user_questions
     @questions = current_user.questions
-      render :index, locals: { title: @title = "Questions #{current_user.username} Asked" }
+      render :index, locals: { full: false, title: @title = "Questions #{current_user.username} Asked" }
   end
 
   def user_answers
+    @title = "Answers #{current_user.username} Made"
+    @answers = current_user.answers
     @questions = current_user.answered_questions
-      render :index, locals: { title: @title = "Questions #{current_user.username} Answered" }
   end
 
   def create_user_answer

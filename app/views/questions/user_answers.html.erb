@@ -1,2 +1,21 @@
 <h1><%= @title %></h1>
-<%= render partial: "shared/questions_list", object: @questions, full: true %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Question</th>
+        <th scope="col">Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @answers.each do |a| %>
+      <tr>
+        <td>
+          <%= a.question.title %>
+        </td>
+        <td>
+           <%= a.content %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
