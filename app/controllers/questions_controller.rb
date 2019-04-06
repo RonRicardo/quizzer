@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    render :index, locals: { title: @title = "All Questions" }
   end
 
   def new
@@ -23,6 +24,7 @@ class QuestionsController < ApplicationController
 
   def user_questions
     @questions = current_user.questions
+      render :index, locals: { title: @title = "Questions #{current_user.username} Asked" }
   end
 
   def create_user_answer
